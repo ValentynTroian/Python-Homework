@@ -2,14 +2,15 @@
 # The game is over if user successfully guessed the word.
 # User can exit the game, reload the word and give up.
 
-import sys
+from sys import exit
 from random import choice
-
+from os import path
 
 # Path to file which contains words
-FILE_PATH = 'C:\\Users\\Valentyn\\Desktop\\dict.txt'
+FILE_PATH = path.join('C:', 'Users', 'Valentyn', 'Desktop', 'dict.txt')
 
-def word_guessing_game():
+
+def read_file_and_choose_random_word():
 
     # File opening and choosing random line(=word for current file) from txt
     try:
@@ -17,12 +18,16 @@ def word_guessing_game():
             word = choice(f.readlines())
 
             # Creating list from string and removing newline (last) symbol from the word
-            word_list = list(word[:-1])
+            letter_list = list(word[:-1])
 
-    # Errors catching while file opening
-    except:
+    except FileNotFoundError:
         print('Could not open file by location: ', FILE_PATH)
-        sys.exit(-1)
+        exit(-1)
+
+    return letter_list
+
+
+def create_alphabets():
 
     # Creating alphabet list to check user's input
     alphabet = []
@@ -35,38 +40,43 @@ def word_guessing_game():
         alphabet.append(chr(letter))
         remaining_alphabet.append(chr(letter))
 
+    return alphabet, remaining_alphabet
+
+
+def guess_process(letter_list, alphabet, remaining_alphabet):
+
     # Word guessed progress
-    word_guessed = list('_' * len(word_list))
+    word_guessed = list('_' * len(letter_list))
 
     # Initialization a variable of user's attempts.
     attempts_cnt = 1
 
     print('Welcome to word guessing game! Please use only uppercase letter\n'
-          'Enter 'RESTART' if you want to choose new word\n'
-          'Enter 'EXIT' if you want to end the game\n'
-          'Enter 'GIVE UP' if you want to stop the game and learn the guessed word\n')
+          'Enter [RESTART] if you want to choose new word\n'
+          'Enter [EXIT] if you want to end the game\n'
+          'Enter [GIVE UP] if you want to stop the game and learn the guessed word\n')
 
     print(''.join(word_guessed))
 
     # Game process
-    while word_list != word_guessed:
+    while letter_list != word_guessed:
 
         # User's input
-        user_input = input('Your choice:')
+        user_input = input('Your choice:').upper()
 
         # Option to exit the game
         if user_input == 'EXIT':
             print('Bye!')
-            sys.exit(1)
+            exit(1)
 
         # Option to reload the word. All progress is resetting
         if user_input == 'RESTART':
-            word_guessing_game()
+            guess_process(letter_list, alphabet, remaining_alphabet)
 
         # Option to stop the game and learn the guessed word
         if user_input == 'GIVE UP':
-            print('Better luck next time! You didn't guess the word:', word)
-            sys.exit(2)
+            print('Better luck next time! You didn\'t guess the word:', ''.join(letter_list))
+            exit(2)
 
         # Check if user's input is valid
         if user_input in alphabet:
@@ -78,10 +88,10 @@ def word_guessing_game():
                 remaining_alphabet.remove(user_input)
 
                 # Check if the word contains user's letter
-                if user_input in word_list:
+                if user_input in letter_list:
 
                     # Finding the position of guessed letters
-                    matches = [i for i, x in enumerate(word_list) if x == user_input]
+                    matches = [i for i, x in enumerate(letter_list) if x == user_input]
 
                     # 'Opening' guessed letters
                     for i in matches:
@@ -97,11 +107,19 @@ def word_guessing_game():
             else:
                 print('You have already entered this letter. Please try another')
         else:
-                print('Incorrect input. Please use only upper-case symbols')
+                print('Incorrect input. Please use only english symbols')
     else:
-        print('Congratulations! The guessed word:', word, '\nCount of your attempts:', attempts_cnt)
-        sys.exit(0)
+        print('Congratulations! The guessed word:', ''.join(letter_list), '\n'
+              'Count of your attempts:', attempts_cnt)
 
-# Function calling
-word_guessing_game()
+    return 0
 
+
+def main():
+    letter_list = read_file_and_choose_random_word()
+    alphabet, remaining_alphabet = create_alphabets()
+    guess_process(letter_list, alphabet, remaining_alphabet)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,27 +1,37 @@
 # The script based on assumption that 'a','o' or other one-symbols and abbreviations ('ll','se','d') are the words
 
-import re
-import sys
+from re import split
+from sys import exit
+from os import path
 
-# File path to the file. According to needs, it would be better to use the parameters to local PC
-file_path = 'C:\\Users\\Valentyn\\Desktop\\Book.txt'
+# Local path to your [Book.txt] file
+MAIN_DIR = path.join('C:', 'Users', 'Valentyn', 'Desktop')
 
-# File opening and catching the errors
-try:
-    f = open(file_path, 'r')
-except:
-    print('Could not open file by location: ', file_path)
-    sys.exit()
 
-# Main
-def word_count(str):
+def read_file():
+    
+    file_path = path.join(MAIN_DIR, 'Book.txt')
+
+    try:
+        with open(file_path, 'r') as f:
+            file = f.read()
+
+    except FileNotFoundError:
+        print('Could not find file by location: ', file_path)
+        exit(-1)
+
+    return file
+
+
+def word_count(file):
+
+    # Splitting the file by words and applying the lowercase
+    words = split('\W+', file.lower())
+
     counts = dict()
 
-    # Splitting the text by words and applying the lowercase to the text
-    text = re. split('\W+', str.lower())
-
     # Words count calculation
-    for word in text:
+    for word in words:
         if word in counts:
             counts[word] += 1
         else:
@@ -29,9 +39,15 @@ def word_count(str):
 
     # Printing the result in usable format
     for i in counts:
-        print (i,':', counts[i])
+        print(i, ':', counts[i])
+
+    return counts
 
 
-# Function calling
-word_count(f.read())
+def main():
+    file = read_file()
+    word_count(file)
 
+
+if __name__ == '__main__':
+    main()
