@@ -9,7 +9,6 @@ from datetime import datetime
 from time import time
 
 # libraries for 'send_email' function
-
 from smtplib import SMTP_SSL, SMTPAuthenticationError
 from ssl import create_default_context
 from email import encoders
@@ -18,7 +17,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 # libraries for 'update_csv_in_gspread' function
-
 from gspread import authorize, exceptions
 from oauth2client.service_account import ServiceAccountCredentials, client
 
@@ -29,15 +27,16 @@ def read_config():
     try:
         with open('config.json') as f:
             config = load(f)
-            return config
 
     except FileNotFoundError:
-        print('Can't find [config.json] in current directory. Please ensure that the file is located there')
+        print('Can\'t find [config.json] in current directory. Please ensure that the file is located there')
         exit(-1)
 
     except OSError:
-        print('OSError during [config.json] reading. Please ensure that your disk isn't full')
+        print('OSError during [config.json] reading. Please ensure that your disk isn\'t full')
         exit(-2)
+
+    return config
 
 
 def connect_to_sql_server(config):
@@ -48,20 +47,21 @@ def connect_to_sql_server(config):
                              'Server=' + config['SQL_SERVER_NAME'] + ';'
                              'Database=' + config['DB_NAME'] + ';'
                              'Trusted_Connection=' + config['TRUSTED_CONNECTION'])
-        return connection
 
     except TimeoutError:
-        print('Can't connect to SQL Server for long time. Please check [config.json] parameters and try again')
+        print('Can\'t connect to SQL Server for long time. Please check [config.json] parameters and try again')
         exit(-3)
     except InterfaceError:
-        print('Can't connect to SQL Server. Please check 'DRIVER' attribute in [config.json] and try again')
+        print('Can\'t connect to SQL Server. Please check [DRIVER] attribute in [config.json] and try again')
         exit(-4)
     except OperationalError:
-        print('Can't connect to SQL Server. Please check 'SQL_SERVER_NAME' attribute in [config.json] and try again')
+        print('Can\'t connect to SQL Server. Please check [SQL_SERVER_NAME] attribute in [config.json] and try again')
         exit(-5)
     except ProgrammingError:
-        print('Can't connect to SQL Server. Please check 'DB_NAME' attribute in [config.json] and try again')
+        print('Can\'t connect to SQL Server. Please check [DB_NAME] attribute in [config.json] and try again')
         exit(-6)
+
+    return connection
 
 
 def close_sql_server_conn(connection):
@@ -69,13 +69,14 @@ def close_sql_server_conn(connection):
 
     try:
         connection.close()
-        return 0
 
     except ProgrammingError:
         print('Attempt to use a closed connection. Probably you use this function twice in main')
 
+    return 0
 
-def find_sql_files_with_traverse(config):   # The function isn't called in main by default.
+
+def find_sql_files_with_traverse(config):   # The function isn\'t called in main by default.
     '''This function returns all sql files from current folder and all subfolders
     using [PATH_TO_SCRIPTS_FOLDER] parameter from [config.json]'''
 
@@ -85,6 +86,7 @@ def find_sql_files_with_traverse(config):   # The function isn't called in main 
         for file in files:
             if file.endswith('.sql'):
                 files_list_tr.append(path.join(config['PATH_TO_SCRIPTS_FOLDER'], file))
+
     return files_list_tr
 
 
@@ -97,6 +99,7 @@ def find_sql_files_without_traverse(config):
     for file in listdir(config['PATH_TO_SCRIPTS_FOLDER']):
         if file.endswith('.sql'):
             files_list.append(file)
+
     return files_list
 
 
@@ -115,7 +118,7 @@ def exec_sql_and_save_to_csv(files_list, connection, config):
             f.write('FILE_NAME,EXECUTION_STATUS,ERROR_MESSAGE,EXECUTION_TIME,OBJECT_NAME,TEST_NAME,COUNT,RESULT\n')
 
     except OSError:
-        print('OSError during', csv_file, 'creating. Please ensure that your disk isn't full')
+        print('OSError during', csv_file, 'creating. Please ensure that your disk isn\'t full')
         exit(-7)
 
     for file in files_list:
@@ -127,7 +130,7 @@ def exec_sql_and_save_to_csv(files_list, connection, config):
 
         # Errors handling during sql file opening
         except OSError:
-            print('OSError during ', file, ' opening. Please ensure that your disk isn't full')
+            print('OSError during ', file, ' opening. Please ensure that your disk isn\'t full')
 
         try:
             start_exec_time = time()
@@ -164,7 +167,7 @@ def exec_sql_and_save_to_csv(files_list, connection, config):
                     wr.writerow(row)
 
         except OSError:
-            print('OSError during writing to ', csv_file, '. Please ensure that your disk isn't full')
+            print('OSError during writing to ', csv_file, '. Please ensure that your disk isn\'t full')
 
     return csv_file
 
@@ -212,11 +215,12 @@ def send_email(csv_file, config):
             server.login(config['EMAIL_SENDER'], password)
             server.sendmail(config['EMAIL_SENDER'], config['EMAIL_RECEIVER'], text)
         except SMTPAuthenticationError:
-            print('Uncorrect Gmail password. Please try again')
+            print('Uncorrected Gmail password. Please try again')
             exit(-8)
         except IOError:
             print('Your input is invalid. Please try again')
             exit(-9)
+
     return text
 
 
@@ -227,7 +231,7 @@ def update_csv_in_gspread(csv_file, config):
     try:
         credentials = ServiceAccountCredentials.from_json_keyfile_name(config['CREDENTIALS_FILE_NAME'])
     except FileNotFoundError:
-        print('Can't find your ', config['CREDENTIALS_FILE_NAME'])
+        print('Can\'t find your ', config['CREDENTIALS_FILE_NAME'])
 
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     credentials = credentials.create_scoped(scope)
@@ -243,7 +247,7 @@ def update_csv_in_gspread(csv_file, config):
     try:
         wks = gc.open(config['G_SPREADSHEET_NAME']).sheet1
     except exceptions.SpreadsheetNotFound:
-        print('Can't find the spreadsheet. Please ensure that you created the spreadsheet '
+        print('Can\'t find the spreadsheet. Please ensure that you created the spreadsheet '
               'with name specified in the ', config['CREDENTIALS_FILE_NAME'])
         exit(-11)
 
