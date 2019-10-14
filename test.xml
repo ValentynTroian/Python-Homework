@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	xml:base="https://www.omgubuntu.co.uk/wp-atom.php"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+	<title type="text">OMG! Ubuntu!</title>
+	<subtitle type="text">Ubuntu Linux News, Apps and Reviews</subtitle>
+
+	<updated>2019-10-11T13:02:50Z</updated>
+
+	<link rel="alternate" type="text/html" href="https://www.omgubuntu.co.uk" />
+	<id>https://www.omgubuntu.co.uk/feed/atom</id>
+	<link rel="self" type="application/atom+xml" href="https://www.omgubuntu.co.uk/feed/atom" />
+
+	
+<icon>https://www.omgubuntu.co.uk/wp-content/uploads/2012/07/omg-ubuntu-logo-32x32.jpg</icon>
+
+		<author>
+			<name>Joey Sneddon</name>
+						<uri>https://twitter.com/joeywritesblogs</uri>
+						</author>
+		<title type="html"><![CDATA[Geary 3.34 Debuts with Deeper GNOME Contacts Integration, Other Changes]]></title>
+		<link rel="alternate" type="text/html" href="https://www.omgubuntu.co.uk/2019/09/geary-3-34-release-new-features" />
+		<id>https://www.omgubuntu.co.uk/?p=153441</id>
+		<updated>2019-09-22T20:16:39Z</updated>
+		<published>2019-09-22T20:06:56Z</published>
+		<category scheme="https://www.omgubuntu.co.uk" term="Apps" /><category scheme="https://www.omgubuntu.co.uk" term="email client" /><category scheme="https://www.omgubuntu.co.uk" term="geary" />		<summary type="html"><![CDATA[<p><img width="406" height="232" src="https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/09/geary-email-client-406x232.jpg" class="attachment-post-list size-post-list wp-post-image" alt="" srcset="https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/09/geary-email-client-406x232.jpg 406w , https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/09/geary-email-client-350x200.jpg 350w , https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/09/geary-email-client-840x480.jpg 840w " sizes="(max-width: 406px) 100vw, 406px" />Geary email client has a new release out, Geary 3.34.0, and in this post I tell you a bit about it and how to install the app on Ubuntu and other Linux distros.</p>
+<p>This post, <a rel="nofollow" href="https://www.omgubuntu.co.uk/2019/09/geary-3-34-release-new-features">Geary 3.34 Debuts with Deeper GNOME Contacts Integration, Other Changes</a>, was written by <a rel="nofollow" href="https://www.omgubuntu.co.uk/author/d0od">Joey Sneddon</a> and first appeared on <a rel="nofollow" href="https://www.omgubuntu.co.uk">OMG! Ubuntu!</a>.</p>
+]]></summary>
+						<link rel="replies" type="text/html" href="https://www.omgubuntu.co.uk/2019/09/geary-3-34-release-new-features#comments" thr:count="0"/>
+		<link rel="replies" type="application/atom+xml" href="https://www.omgubuntu.co.uk/2019/09/geary-3-34-release-new-features/feed/atom" thr:count="0"/>
+		<thr:total>0</thr:total>
+			</entry>
+		<entry>
+		<author>
+			<name>Valentyn Troian</name>
+						<uri>https://twitter.com/joeywritesblogs</uri>
+						</author>
+		<title type="html"><![CDATA[InSync 3 Released, Brings OneDrive Sync to Linux]]></title>
+		<link rel="alternate" type="text/html" href="https://www.omgubuntu.co.uk/2019/09/insync-3-stable-one-drive-sync" />
+		<id>https://www.omgubuntu.co.uk/?p=153302</id>
+		<updated>2019-10-14T15:53:27Z</updated>
+		<published>2019-09-19T15:56:46Z</published>
+		<category scheme="https://www.omgubuntu.co.uk" term="Apps" /><category scheme="https://www.omgubuntu.co.uk" term="News" /><category scheme="https://www.omgubuntu.co.uk" term="cloud storage" /><category scheme="https://www.omgubuntu.co.uk" term="google drive" /><category scheme="https://www.omgubuntu.co.uk" term="insync" /><category scheme="https://www.omgubuntu.co.uk" term="onedrive" />		<summary type="html"><![CDATA[<p><img width="406" height="232" src="https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/05/cropped-insync-3-onedrive-1-406x232.jpg" class="attachment-post-list size-post-list wp-post-image" alt="" srcset="https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/05/cropped-insync-3-onedrive-1-406x232.jpg 406w , https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/05/cropped-insync-3-onedrive-1-350x200.jpg 350w , https://149366088.v2.pressablecdn.com/wp-content/uploads/2019/05/cropped-insync-3-onedrive-1-840x480.jpg 840w " sizes="(max-width: 406px) 100vw, 406px" />InSync 3 has been released with OneDrive sync, a faster, more reliable sync engine, and better selective sync options for Windows, macOS and Linux users.</p>
+<p>This post, <a rel="nofollow" href="https://www.omgubuntu.co.uk/2019/09/insync-3-stable-one-drive-sync">InSync 3 Released, Brings OneDrive Sync to Linux</a>, was written by <a rel="nofollow" href="https://www.omgubuntu.co.uk/author/d0od">Joey Sneddon</a> and first appeared on <a rel="nofollow" href="https://www.omgubuntu.co.uk">OMG! Ubuntu!</a>.</p>
+]]></summary>
+						<link rel="replies" type="text/html" href="https://www.omgubuntu.co.uk/2019/09/insync-3-stable-one-drive-sync#comments" thr:count="0"/>
+		<link rel="replies" type="application/atom+xml" href="https://www.omgubuntu.co.uk/2019/09/insync-3-stable-one-drive-sync/feed/atom" thr:count="0"/>
+		<thr:total>0</thr:total>
+			</entry>
+	</feed>
