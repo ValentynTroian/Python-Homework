@@ -37,6 +37,7 @@ def word_count(file):
         counts[word] += 1
     return counts
 
+
 def print_sorted_keys_to_console(counts):
     '''Printing the result to the console sorted by keys alphabetically'''
     for elem in sorted(counts.items()):
