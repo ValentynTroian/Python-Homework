@@ -1,12 +1,14 @@
-''' The script based on assumption that 'a','o' or other one-symbols
-    and abbreviations ('ll','se','d') are the words'''
+'''
+The script based on assumption that 'a','o' or other one-symbols
+and abbreviations ('ll','se','d') are the words
+'''
 
 from re import split
 from sys import exit
 from os import path
 
 # Local path to your [Book.txt] file
-MAIN_DIR = path.join('C:', 'Users', 'Valentyn_Troian', 'Desktop')
+MAIN_DIR = path.join('C:\\', 'Users', 'Valentyn_Troian', 'Desktop')
 
 
 def read_file(main_dir):
@@ -28,7 +30,6 @@ def word_count(file):
     '''This function counts words in text'''
     # Splitting the file by words and applying the lowercase
     words = split(r'\W+', file.lower())
-
     counts = dict()
 
     # Words count calculation
@@ -37,19 +38,21 @@ def word_count(file):
             counts[word] += 1
         else:
             counts[word] = 1
+    return counts
 
-    # Printing the result in usable format
-    for i in counts:
+def print_sorted_keys_to_console(counts):
+    '''Printing the result to the console sorted by keys alphabetically'''
+    for i in sorted(counts.keys()):
         print(i, ':', counts[i])
 
-    return counts
+    return 0
 
 
 def main():
     '''This function starts the main control flow'''
     file = read_file(MAIN_DIR)
-    word_count(file)
-
+    counts = word_count(file)
+    print_sorted_keys_to_console(counts)
 
 if __name__ == '__main__':
     main()
