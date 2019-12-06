@@ -1,6 +1,8 @@
-''' Word guessing game.
-    The game is over if user successfully guessed the word.
-    User can exit the game, reload the word and give up.'''
+''' 
+Word guessing game.
+The game is over if user successfully guessed the word.
+User can exit the game, reload the word and give up.
+'''
 
 from sys import exit
 from random import choice
