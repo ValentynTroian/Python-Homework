@@ -4,7 +4,7 @@ and abbreviations ('ll','se','d') are the words
 '''
 from collections import Counter
 from re import split
-from sys import argv, exit
+from sys import exit, argv
 from os import path
 
 
@@ -13,6 +13,7 @@ def read_file():
     if len(argv) == 2:
         if argv[1] == '/?':
             print('The command usage: python [script_name.py] [file.txt]')
+            exit(0)
         else:
             file_path = argv[1]
 
