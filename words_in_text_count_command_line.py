@@ -4,7 +4,7 @@ and abbreviations ('ll','se','d') are the words
 '''
 from collections import Counter
 from re import split
-from sys import exit, argv
+from sys import argv, exit
 from os import path
 
 
