@@ -7,7 +7,7 @@ from re import findall
 from sys import argv, exit
 
 
-def read_file():
+def read_file(argv):
     '''This function reads the file specified as 2nd parameter of command'''
     if len(argv) == 2:
         if argv[1] == '/?':
@@ -33,8 +33,8 @@ def read_file():
 
 def word_count(file):
     '''This function counts words in text'''
-    words = findall(r'\w+', file.lower())
-    return Counter(words)
+    words = Counter(findall(r'\w+', file.lower()))
+    return words
 
 
 def print_sorted_keys_to_console(counts):
@@ -47,7 +47,7 @@ def print_sorted_keys_to_console(counts):
 
 def main():
     '''This function starts the main control flow'''
-    file = read_file()
+    file = read_file(argv)
     counts = word_count(file)
     print_sorted_keys_to_console(counts)
 
