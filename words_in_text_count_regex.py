@@ -12,6 +12,7 @@ def read_file(argv):
     if len(argv) == 2:
         if argv[1] == '/?':
             print('The command usage: python [script_name.py] [file.txt]')
+            exit(0)
         else:
             file_path = argv[1]
 
